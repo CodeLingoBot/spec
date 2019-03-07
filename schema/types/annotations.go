@@ -76,7 +76,7 @@ func (a *Annotations) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-// Retrieve the value of an annotation by the given name from Annotations, if
+// Get retrieves the value of an annotation by the given name from Annotations, if
 // it exists.
 func (a Annotations) Get(name string) (val string, ok bool) {
 	for _, anno := range a {

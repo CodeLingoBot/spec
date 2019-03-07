@@ -236,7 +236,7 @@ func DiscoverACIEndpoints(app App, hostHeaders map[string]http.Header, insecure 
 	return dd.ACIEndpoints, attempts, nil
 }
 
-// DiscoverPublicKey will make HTTPS requests to find the ac-public-keys meta
+// DiscoverPublicKeys will make HTTPS requests to find the ac-public-keys meta
 // tags and optionally will use HTTP if insecure is set. hostHeaders
 // specifies the header to apply depending on the host (e.g. authentication).
 // It will not give up until it has exhausted the path or found an public key.

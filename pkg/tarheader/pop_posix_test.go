@@ -25,7 +25,7 @@ import (
 	"testing"
 )
 
-// mknod requires privilege ...
+// TestHeaderUnixDev: mknod requires privilege ...
 func TestHeaderUnixDev(t *testing.T) {
 	hExpect := tar.Header{
 		Name:     "./dev/test0",

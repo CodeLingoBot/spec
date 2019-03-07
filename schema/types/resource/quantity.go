@@ -487,7 +487,7 @@ func (q *Quantity) Sign() int {
 	return q.i.Sign()
 }
 
-// AsScaled returns the current value, rounded up to the provided scale, and returns
+// AsScale returns the current value, rounded up to the provided scale, and returns
 // false if the scale resulted in a loss of precision.
 func (q *Quantity) AsScale(scale Scale) (CanonicalValue, bool) {
 	if q.d.Dec != nil {
@@ -732,7 +732,7 @@ type qFlag struct {
 	dest *Quantity
 }
 
-// Sets the value of the internal Quantity. (used by flag & pflag)
+// Set: Sets the value of the internal Quantity. (used by flag & pflag)
 func (qf qFlag) Set(val string) error {
 	q, err := ParseQuantity(val)
 	if err != nil {
@@ -743,12 +743,12 @@ func (qf qFlag) Set(val string) error {
 	return nil
 }
 
-// Converts the value of the internal Quantity to a string. (used by flag & pflag)
+// String: Converts the value of the internal Quantity to a string. (used by flag & pflag)
 func (qf qFlag) String() string {
 	return qf.dest.String()
 }
 
-// States the type of flag this is (Quantity). (used by pflag)
+// Type: States the type of flag this is (Quantity). (used by pflag)
 func (qf qFlag) Type() string {
 	return "quantity"
 }

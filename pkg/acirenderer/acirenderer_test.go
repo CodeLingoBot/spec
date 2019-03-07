@@ -223,7 +223,7 @@ func TestGetUpperPWLM(t *testing.T) {
 	}
 }
 
-// Test an image with 1 dep. The parent provides a dir not provided by the image.
+// TestDirFromParent tests an image with 1 dep. The parent provides a dir not provided by the image.
 func TestDirFromParent(t *testing.T) {
 	dir, err := ioutil.TempDir("", tstprefix)
 	if err != nil {
@@ -318,7 +318,7 @@ func TestDirFromParent(t *testing.T) {
 	}
 }
 
-// Test an image with 1 dep. The image provides a dir not provided by the parent.
+// TestNewDir tests an image with 1 dep. The image provides a dir not provided by the parent.
 func TestNewDir(t *testing.T) {
 	dir, err := ioutil.TempDir("", tstprefix)
 	if err != nil {
@@ -413,7 +413,7 @@ func TestNewDir(t *testing.T) {
 	}
 }
 
-// Test an image with 1 dep. The image overrides dirs modes from the parent dep. Verifies the right permissions.
+// TestDirOverride tests an image with 1 dep. The image overrides dirs modes from the parent dep. Verifies the right permissions.
 func TestDirOverride(t *testing.T) {
 	dir, err := ioutil.TempDir("", tstprefix)
 	if err != nil {
@@ -515,7 +515,7 @@ func TestDirOverride(t *testing.T) {
 	}
 }
 
-// Test an image with 1 dep. The parent provides a file not provided by the image.
+// TestFileFromParent tests an image with 1 dep. The parent provides a file not provided by the image.
 func TestFileFromParent(t *testing.T) {
 	dir, err := ioutil.TempDir("", tstprefix)
 	if err != nil {
@@ -610,7 +610,7 @@ func TestFileFromParent(t *testing.T) {
 	}
 }
 
-// Test an image with 1 dep. The image provides a file not provided by the parent.
+// TestNewFile tests an image with 1 dep. The image provides a file not provided by the parent.
 func TestNewFile(t *testing.T) {
 	dir, err := ioutil.TempDir("", tstprefix)
 	if err != nil {
@@ -705,7 +705,7 @@ func TestNewFile(t *testing.T) {
 	}
 }
 
-// Test an image with 1 dep. The image overrides a file already provided by the parent dep.
+// TestFileOverride tests an image with 1 dep. The image overrides a file already provided by the parent dep.
 func TestFileOverride(t *testing.T) {
 	dir, err := ioutil.TempDir("", tstprefix)
 	if err != nil {
@@ -807,7 +807,7 @@ func TestFileOverride(t *testing.T) {
 	}
 }
 
-// Test an image with 1 dep. The upper image overrides a dir provided by a
+// TestFileOvverideDir tests an image with 1 dep. The upper image overrides a dir provided by a
 // parent with a non-dir file.
 func TestFileOvverideDir(t *testing.T) {
 	dir, err := ioutil.TempDir("", tstprefix)
@@ -924,7 +924,7 @@ func TestFileOvverideDir(t *testing.T) {
 	}
 }
 
-// Test an image with 1 dep. The parent image has a pathWhiteList.
+// TestPWLOnlyParent tests an image with 1 dep. The parent image has a pathWhiteList.
 func TestPWLOnlyParent(t *testing.T) {
 	dir, err := ioutil.TempDir("", tstprefix)
 	if err != nil {
@@ -1105,7 +1105,7 @@ func TestPWLOnlyParent(t *testing.T) {
 	}
 }
 
-// Test an image with 1 dep. The upper image has a pathWhiteList.
+// TestPWLOnlyImage tests an image with 1 dep. The upper image has a pathWhiteList.
 func TestPWLOnlyImage(t *testing.T) {
 	dir, err := ioutil.TempDir("", tstprefix)
 	if err != nil {
@@ -1284,7 +1284,7 @@ func TestPWLOnlyImage(t *testing.T) {
 	}
 }
 
-// Test an image with a pathwhitelist and 2 deps (first with pathWhiteList and the second without pathWhiteList)
+// Test2Deps1 tests an image with a pathwhitelist and 2 deps (first with pathWhiteList and the second without pathWhiteList)
 // A (pwl) ---- B (pwl)
 //          \-- C
 func Test2Deps1(t *testing.T) {
@@ -1497,7 +1497,7 @@ func Test2Deps1(t *testing.T) {
 	}
 }
 
-// Test an image with a pathwhitelist and 2 deps (first without pathWhiteList and the second with pathWhiteList)
+// Test2Deps2 tests an image with a pathwhitelist and 2 deps (first without pathWhiteList and the second with pathWhiteList)
 // A (pwl) ---- B
 //          \-- C (pwl)
 func Test2Deps2(t *testing.T) {
@@ -1710,7 +1710,7 @@ func Test2Deps2(t *testing.T) {
 	}
 }
 
-// Test A (pwl) ---- B
+// Test3Deps tests A (pwl) ---- B
 //               \-- C -- D
 func Test3Deps(t *testing.T) {
 	dir, err := ioutil.TempDir("", tstprefix)
@@ -1990,7 +1990,7 @@ func Test3Deps(t *testing.T) {
 	}
 }
 
-// Given an image app name and optional labels, get the best matching image
+// RenderACI: Given an image app name and optional labels, get the best matching image
 // available in the store, build its dependency list and render it inside dir
 func RenderACI(name types.ACIdentifier, labels types.Labels, ap ACIRegistry) (map[string]*fileInfo, error) {
 	renderedACI, err := GetRenderedACI(name, labels, ap)
@@ -2000,7 +2000,7 @@ func RenderACI(name types.ACIdentifier, labels types.Labels, ap ACIRegistry) (ma
 	return renderImage(renderedACI, ap)
 }
 
-// Given an already populated dependency list, it will extract, under the provided
+// RenderACIFromList: Given an already populated dependency list, it will extract, under the provided
 // directory, the rendered ACI
 func RenderACIFromList(imgs Images, ap ACIProvider) (map[string]*fileInfo, error) {
 	renderedACI, err := GetRenderedACIFromList(imgs, ap)

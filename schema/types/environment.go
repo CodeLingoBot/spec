@@ -79,7 +79,7 @@ func (e *Environment) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
-// Retrieve the value of an environment variable by the given name from
+// Get retrieves the value of an environment variable by the given name from
 // Environment, if it exists.
 func (e Environment) Get(name string) (value string, ok bool) {
 	for _, env := range e {
